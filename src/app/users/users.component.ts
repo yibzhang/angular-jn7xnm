@@ -34,6 +34,11 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(user).subscribe();    
     this.users = this.users.filter(u => u != user);
   }
+  
+  updateUser(user:User, username:string){
+    user.username = username;
+    this.userService.updateUser(user).subscribe();
+  }
 
   searchUsers(keyword:any):void{
     this.userService.searchUsers(keyword).subscribe(users => {this.searchedResults = users});

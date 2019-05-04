@@ -8,10 +8,20 @@ users works!
   <button (click)="addUser(userName.value); userName.value=''">Add</button>
 </div>
 <div *ngIf="users">
-  <li *ngFor="let user of users">
-    username:{{user.username}}, id:{{user.id}}
-    <button *ngIf="users.length > 1" (click)="deleteUser(user)">Delete</button>
-  </li>
+  <div *ngFor="let user of users">
+    <div *ngIf="!user.editMode">
+      username:{{user.username}}, id:{{user.id}}
+      <button *ngIf="users.length > 1" (click)="deleteUser(user)">Delete</button>
+      <button (click)="user.editMode=true">Edit</button>
+    </div>
+    <div *ngIf="user.editMode">
+      username:
+      <input type="text" name="username" value="{{user.username}}" #userName>
+      , id:{{user.id}}
+      <button *ngIf="users.length > 1" (click)="deleteUser(user)">Delete</button>
+      <button (click)="updateUser(user, userName.value);user.editMode=false">Save</button>
+    </div>
+  </div>
 </div>
 
 <!-- Search user-->

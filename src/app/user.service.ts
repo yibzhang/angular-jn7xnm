@@ -28,6 +28,10 @@ export class UserService{
     );
   }
 
+  updateUser(user:User):Observable<any>{
+    return this.http.put<User>(`${this.usersUrl}/${user.id}`, user, httpOptions);
+  }
+
   searchUsers(keyword:any):Observable<User[]>{
     return this.http.get<User[]>(this.usersUrl+this.searchString(keyword));
   }
