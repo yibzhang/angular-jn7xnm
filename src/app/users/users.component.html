@@ -1,0 +1,30 @@
+<p>
+users works!
+</p>
+<!-- Add user, delete user, edit user-->
+<div>
+  <label for="username">Username : </label>
+  <input type="text" name="username" #userName>
+  <button (click)="addUser(userName.value); userName.value=''">Add</button>
+</div>
+<div *ngIf="users">
+  <li *ngFor="let user of users">
+    username:{{user.username}}, id:{{user.id}}
+    <button *ngIf="users.length > 1" (click)="deleteUser(user)">Delete</button>
+  </li>
+</div>
+
+<!-- Search user-->
+<div>
+  <div>    
+    <font color='green'>//Input number search by id, input string search username;</font>
+  </div>
+  <label for="search">Search : </label>
+  <input type="text" name="search" #keyword>
+  <button (click)="searchUsers(keyword.value); keyword.value=''">Search</button>
+</div>
+<div *ngIf="searchedResults">
+  <li *ngFor="let user of searchedResults">
+    username:{{user.username}}, id:{{user.id}}
+  </li>
+</div>
