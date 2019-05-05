@@ -7,3 +7,5 @@ Add user;
 Delete user;
 Update username;
 Search user by username or id;
+
+![](user-crud.gif)
