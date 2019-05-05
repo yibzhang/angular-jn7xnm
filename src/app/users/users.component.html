@@ -36,5 +36,12 @@ users works!
 <div *ngIf="searchedResults">
   <li *ngFor="let user of searchedResults">
     username:{{user.username}}, id:{{user.id}}
+    <div *ngIf="highligtSearchedKey(user.username).length > 1">
+      <a *ngFor="let part of highligtSearchedKey(user.username); let i=index">
+        <!--<font *ngIf="part == '' && i == 0" color='red'>{{searchedKey}}</font>-->
+        <font *ngIf="i < highligtSearchedKey(user.username).length-1">{{part}}<font color="red">{{searchedKey}}</font></font>
+        <font *ngIf="part != '' && i == highligtSearchedKey(user.username).length-1">{{part}}</font>
+      </a>
+    </div>
   </li>
 </div>

@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 export class UsersComponent implements OnInit {
   private users: User[];
   private searchedResults: User[];
+  private searchedKey: string;
 
   constructor(private userService:UserService) { }
 
@@ -41,6 +42,7 @@ export class UsersComponent implements OnInit {
   }
 
   searchUsers(keyword:any):void{
+    this.searchedKey = keyword;
     this.userService.searchUsers(keyword).subscribe(users => {this.searchedResults = users});
     
     /*users => {
@@ -50,4 +52,7 @@ export class UsersComponent implements OnInit {
     });*/
   }
 
+  highligtSearchedKey(result:any):string[]{
+    return isNaN(result)? result.split(this.searchedKey):[];
+  }
 }
