@@ -1,5 +1,6 @@
 # angular-user-crud
 
+A small project implemented by Angular 8 to achieve basic CRUD functions for a user Model. Add search functions for fun.
 Use https://github.com/angular/in-memory-web-api.git as backend testing.
 
 Function achieved:
